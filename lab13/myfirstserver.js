@@ -6,4 +6,6 @@ var http = require('http');
 
  res.end('Hello World!');
 
+ console.log('Hello World!');
+
 }).listen(8080);
