@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">    <!-- Specify the character encoding -->
+    <link rel="stylesheet" type="text/css" href="style.css">     <!-- Linking to the stylesheet for css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>Pin Pints | Bars</title>    <!-- Defining the title of the page -->
+</head>
+
+<body>
+<!-- banner image -->
+<div id="banner">
+    <header>
+        <div>
+            <a href="/"><img src="img/pinpint.png" class="brand" alt=""></a>
+            <div id="bannerText">PinPints</div>
+        </div>
+
+        <!-- auth text -->
+        <ul id="auth">
+            <% if (!auth) { %>
+            <!-- Div tag for the user to register or login choices -->
+            <li class="logintxt"><a href="#modalLogin" data-toggle="modal">Login</a></li>      <!-- Login choice -->
+            <li class="registertxt"><a href="#modalRegister" data-toggle="modal">Register</a></li>
+            <!-- Register choice -->
+            <% } else { %>
+            <li class="accountLink"><a href="account">Account</a></li>      <!-- Account choice -->
+            <li class="logOutLink"><a href="/logout">LogOut</a></li>      <!-- LogOut choice -->
+            <% } %>
+        </ul>
+
+    </header>
+    <!-- navbar items and menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">       <!-- Starting to create a navigation bar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                    <!-- Link to homepage -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="bar">My Bars</a>     <!-- Link to Bar page -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="about">About</a>     <!-- Link to About page -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="contact">Contact</a>     <!-- Link to Contact page -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper">
+    <main>
+        <p>Here there will be a list of bars the user has rated and any comments added. This is where the registered
+            users can track where they have been and what bars they enjoyed.</p>
+    </main>
+
+
+    <!-- Modal Login https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=simple-modal-login-form-->
+    <div id="modalLogin" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <!-- TODO add login action -->
+                <form action="" method="post">   <!-- Creating a form for user to be able to login -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Email Address"
+                                   required="required">   <!-- Input box for users to enter their email address -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                                <!-- TODO forgot password page -->
+                                <a href="#" class="pull-right text-muted">
+                                    <small>Forgot?</small>
+                                </a>
+                            </div>
+                            <input type="password" id="password" class="form-control" placeholder="Enter Password"
+                                   required="required" data-toggle="password">
+                            <!-- Input box for user to enter their password -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary mr-auto" value="Login">
+                        <!-- Button when pressed will login user if details are correct -->
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="modalRegister" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <!-- TODO add register action -->
+                <form action="" method="post">     <!-- Creating a form for the user to register -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Register</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Email Address"
+                                   required="required">       <!-- Input box for users to enter their email address -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                            </div>
+                            <input type="password" id="password" class="form-control" placeholder="Enter Password"
+                                   required="required" data-toggle="password">
+                            <!-- Input box for user to enter their password -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Repeat Password</label>
+                            </div>
+                            <input type="password" id="password" class="form-control" placeholder="Re-enter Password"
+                                   required="required" data-toggle="password">
+                            <!-- Input box for user to re-enter their password -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary mr-auto" value="Register">
+                        <!-- Button when pressed will login user if details are correct -->
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Foooter -->
+    <footer class="footer">
+        <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+        <!-- Social Media icons -->
+        <div class="sm">
+            <a class="facebook" href="https://en-gb.facebook.com">
+                <img class="facebook" src="img/facebook.png" alt="missing facebook">
+            </a>
+            <a class="twitter"
+               href="https://twitter.com/Twitter?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                <img class="twitter" src="img/twitter.png" alt="Missing twitter">
+            </a>
+        </div>
+
+        <!-- contact details -->
+        <div id="contact">1 Test Street | Aberdeen | AB87 ER2 <br/>
+            contact@pinpints.com
+        </div>       <!-- Paragraph for the address and email -->
+
+        <!-- copyright information -->
+        <p class="copyright">
+            2018 &copy; Copyright: PinPints
+        </p>         <!-- Paragraph for the Copyright -->
+
+    </footer>
+</div>
+<!-- script to set password visability -->
+<script type="text/javascript">
+    $("#password").password('toggle');
+</script>
+</body>
+</html>

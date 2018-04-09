@@ -1,0 +1,37 @@
+{
+  "name": "pintpint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amosar/PinPint.git"
+  },
+  "keywords": [
+    "Beer",
+    "bar"
+  ],
+  "author": "Jordan Sleigh, James Stevenson, Paul Collins, Maxime Cassina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amosar/PinPint/issues"
+  },
+  "homepage": "https://github.com/Amosar/PinPint#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "connect-ensure-login": "^0.1.1",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongodb": "^3.0.4",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "uuid": "^3.2.1"
+  }
+}

@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">      <!-- Specify the character encoding -->
+    <link rel="stylesheet" type="text/css" href="style.css">     <!-- linking to the stylesheet for css -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEWXoCVtt0-ieRRHaEiuuRH2DVRfHaXRU&libraries=places"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script src="scripts/googleMaps.js"></script>
+    <script src="scripts/auth.js"></script>
+
+    <title>Pin Pints | Homepage</title>       <!-- Defining the title of the page -->
+</head>
+
+<body>
+<!-- banner image -->
+<div id="banner">    <!-- Created a div for the banner -->
+    <header>       <!-- Header tag set up as a container -->
+        <div>
+            <a href="/"><img src="img/pinpint.png" class="brand" alt=""></a>
+            <div id="bannerText">PinPints</div>      <!-- Image for the banner along with the title -->
+        </div>
+
+        <!-- auth text -->
+        <ul id="auth">
+            <% if (!auth) { %>
+            <!-- Div tag for the user to register or login choices -->
+            <li class="logintxt"><a href="#modalLogin" data-toggle="modal">Login</a></li>      <!-- Login choice -->
+            <li class="registertxt"><a href="#modalRegister" data-toggle="modal">Register</a></li>
+            <!-- Register choice -->
+            <% } else { %>
+            <li class="accountLink"><a href="account">Account</a></li>      <!-- Account choice -->
+            <li class="logOutLink"><a href="/logout">LogOut</a></li>      <!-- LogOut choice -->
+            <% } %>
+        </ul>
+
+    </header>
+    <!-- navbar items and menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">       <!-- Starting to create a navigation bar -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Home<span class="sr-only">(current)</span></a>
+                    <!-- Link to homepage -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="bar">My Bars</a>     <!-- Link to Bar page -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="about">About</a>     <!-- Link to About page -->
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="contact">Contact</a>     <!-- Link to Contact page -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!-- Main content -->
+<div class="wrapper">
+    <!-- The Wrapper, wraps the layout so that it flows down as a hierarchy and makes sure no content is out of place -->
+    <main>
+        <div id="container">
+            <!-- Add Google Maps -->
+            <div id="map"></div>
+            <noscript>An error has occurred, please verify if javascript is enabled of this website</noscript>
+            <!-- Search box and location -->
+            <form class="searchfunction">       <!-- Creating a form for users to makes searches for bars -->
+                <input type="text" placeholder="Enter a Location" name="search" id="searhbar"/>
+                <!-- Input bar for users to type their search into -->
+                <input type="submit" value="Search" id="submitbar"/>
+                <!-- Submit button when pressed will try to locate the users search on the map -->
+                <input type="button" class="closetome" value="Bars Nearby">
+                <!-- Button when pressed will try to locate nearby bars to the users location -->
+            </form>
+            <!-- Loading icon -->
+            <div class="location-loading">
+                <div class="ball"></div>
+                <div class="ball1"></div>
+                <!-- When user searches for a location, a buffering ball will appear to show the user that the search is happening -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Login https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=simple-modal-login-form-->
+    <div id="modalLogin" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <form action="/login" id="loginForm" method="post">
+                    <!-- Creating a form for user to be able to login -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="login-message"></div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Email Address"
+                                   required="required" autocomplete="email" name="email">
+                            <!-- Input box for users to enter their email address -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                                <!-- TODO forgot password page -->
+                                <a href="#" class="pull-right text-muted">
+                                    <small>Forgot?</small>
+                                </a>
+                            </div>
+                            <input type="password" class="form-control password" placeholder="Enter Password"
+                                   required="required" autocomplete="current-password" data-toggle="password"
+                                   name="password">   <!-- Input box for user to enter their password -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary mr-auto" value="Login">
+                        <!-- Button when pressed will login user if details are correct -->
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="modalRegister" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <form action="/register" id="registerForm" method="post">
+                    <!-- Creating a form for the user to register -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Register</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="register-message"></div>
+                        <div class="form-group">
+                            <label>Pseudo</label>
+                            <input type="text" class="form-control" name="login" placeholder="Enter your pseudo"
+                                   required="required" autocomplete="nickname">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Email Address"
+                                   required="required" autocomplete="email" name="email">
+                            <!-- Input box for users to enter their email address -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                            </div>
+                            <input type="password" class="form-control password" placeholder="Enter Password"
+                                   required="required" autocomplete="new-password" data-toggle="password"
+                                   name="password">      <!-- Input box for user to enter their password -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Repeat Password</label>
+                            </div>
+                            <input type="password" class="form-control password" placeholder="Re-enter Password"
+                                   required="required" autocomplete="new-password" data-toggle="password"
+                                   name="confirmPassword">   <!-- Input box for user to re-enter their password -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary mr-auto" value="Register">
+                        <!-- Button when pressed will login user if details are correct -->
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Foooter -->
+    <footer class="footer">
+        <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+        <!-- Social Media icons -->
+        <div class="sm"> <!-- A box to hold the images "Facebook" & "Twitter" -->
+            <a class="facebook" href="https://en-gb.facebook.com"> <!-- A Facebook URL Link -->
+                <img class="facebook" src="img/facebook.png" alt="missing facebook">
+                <!-- Facebook image which has been changed into an icon for users to click on -->
+            </a>
+            <a class="twitter"
+               href="https://twitter.com/Twitter?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                <img class="twitter" src="img/twitter.png" alt="Missing twitter">
+            </a>
+        </div>
+
+        <!-- contact details -->
+        <div id="contact">1 Test Street | Aberdeen | AB87 ER2 <br/>
+            contact@pinpints.com
+        </div>       <!-- Paragraph for the address and email -->
+
+        <!-- copyright information -->
+        <p class="copyright">
+            2018 &copy; Copyright: PinPints
+        </p>         <!-- Paragraph for the Copyright -->
+
+    </footer>
+
+</div>
+</body>
+</html>
