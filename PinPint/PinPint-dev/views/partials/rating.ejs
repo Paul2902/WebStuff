@@ -1,0 +1,32 @@
+<div class="modal-dialog" role="document">
+    <form action="/updateRating" id="ratingForm" method="post">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Error, no bar found</h5>
+            </div>
+            <div class="modal-body">
+                <div id="ratingForm-message"></div>
+                <div class="form-group">
+                    <label for="rating-field" class="col-form-label">Rating:</label>
+                    <input type="number" min="1" max="5" name="rating" class="form-control" id="rating-field">
+                </div>
+                <div class="form-group">
+                    <label for="rating-comment" class="col-form-label">Comment:</label>
+                    <textarea class="form-control" name="comment" maxlength="500" id="rating-comment"></textarea>
+                </div>
+            </div>
+            <div style="display: none;">
+                <label for="modalBarId" class="col-form-label">Workaround to send barID (do not edit this
+                    value!)</label>
+                <input name="barID" id="modalBarId" readonly/>
+                <label for="modalBarName" class="col-form-label">Workaround to send barName (do not edit this
+                    value!)</label>
+                <input name="barName" id="modalBarName" readonly/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

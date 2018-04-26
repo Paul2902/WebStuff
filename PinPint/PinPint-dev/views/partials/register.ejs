@@ -1,0 +1,46 @@
+<!-- views/partials/register.ejs -->
+<div class="modal-dialog modal-login">
+  <div class="modal-content">
+    <form action="/register" id="registerForm" method="post">
+      <!-- Creating a form for the user to register -->
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+      </div>
+      <div class="modal-body">
+        <div id="register-message"></div>
+        <div class="form-group">
+          <label>Pseudo</label>
+          <input type="text" class="form-control" name="login" placeholder="Enter your pseudo"
+          required="required" autocomplete="nickname">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" placeholder="Enter Email Address"
+          required="required" autocomplete="email" name="email">
+          <!-- Input box for users to enter their email address -->
+        </div>
+        <div class="form-group">
+          <div class="clearfix">
+            <label>Password</label>
+          </div>
+          <input type="password" class="form-control password" placeholder="Enter Password"
+          required="required" autocomplete="new-password" data-toggle="password"
+          name="password">      <!-- Input box for user to enter their password -->
+        </div>
+        <div class="form-group">
+          <div class="clearfix">
+            <label>Repeat Password</label>
+          </div>
+          <input type="password" class="form-control password" placeholder="Re-enter Password"
+          required="required" autocomplete="new-password" data-toggle="password"
+          name="confirmPassword">   <!-- Input box for user to re-enter their password -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-primary mr-auto" value="Register">
+        <!-- Button when pressed will login user if details are correct -->
+        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+      </div>
+    </form>
+  </div>
+</div>

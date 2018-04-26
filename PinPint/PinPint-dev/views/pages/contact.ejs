@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ejs file for the header information  -->
+  <% include ../partials/head %>
+
+  <title>Pin Pints | Contact Us</title>   <!-- Defining the title of the page -->
+</head>
+
+<body>
+
+  <div id="banner">    <!-- Created a div for the banner -->
+    <!-- ejs file where the navbar and banner are contained -->
+    <% include ../partials/banner %>
+  </div>
+
+
+  <div class="wrapper">
+    <main>
+      <div id="contactmsg"><%- msg %></div>
+      <div class="contactus">
+        <h2>Get in touch</h2>
+        <p>Please fill in the form below and one of the team will get back in due course</p>
+        <!-- msg will show once user submits form -->
+        <form action="/contact" id="ContactForm" method="post">      <!-- Creating a form for users to contact us -->
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Enter Name"
+            required="required">
+          </div>     <!-- Input box for users to enter their First name -->
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+            placeholder="Enter Email" required="required">
+          </div>      <!-- Input box for users to enter their email address -->
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" placeholder="Subject"
+            required="required">
+          </div>      <!-- Input box for users to enter their subject -->
+          <div class="form-group">
+            <textarea id="msg" class="form-control" name="msg" placeholder="Message us!" required="required"></textarea>
+          </div>      <!-- Text area for users to enter a message -->
+          <button type="submit" style="width: 30%" class="btn btn-primary">Send</button>
+          <!-- Submit button when pressed will send all the details to us -->
+        </form>
+      </div>
+      <div class="sideimg">
+        <img id="mail" src="/img/mail.png">
+      </div>
+    </main>
+
+    <!-- Modal Login-->
+    <div id="modalLogin" class="modal fade">
+      <!-- login ejs file -->
+      <% include ../partials/login %>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="modalRegister" class="modal fade">
+      <!-- register ejs file -->
+      <% include ../partials/register %>
+    </div>
+
+    <!-- Foooter -->
+    <footer class="footer">
+      <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+      <!-- ejs file where footer is contained -->
+      <% include ../partials/footer %>
+    </footer>
+  </div>
+</body>
+</html>

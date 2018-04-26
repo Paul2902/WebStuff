@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ejs file for the header information  -->
+  <% include ../partials/head %>
+
+  <title>Pin Pints | Page Not Found</title>      <!-- Defining the title of the page -->
+</head>
+
+<body>
+
+  <div id="banner">    <!-- Created a div for the banner -->
+    <!-- ejs file where the navbar and banner are contained -->
+    <% include ../partials/banner %>
+  </div>
+
+  <div class="wrapper">
+    <main>
+      <div class="error">
+          <h2>404 - Page Not Found</h2>
+          <p>Sorry not tonight I think it's time to go <a href="/">home</a></p>
+            </div>
+          </main>
+
+          <!-- Modal Login-->
+          <div id="modalLogin" class="modal fade">
+            <!-- login ejs file -->
+            <% include ../partials/login %>
+          </div>
+
+          <!-- Modal Register -->
+          <div id="modalRegister" class="modal fade">
+            <!-- register ejs file -->
+            <% include ../partials/register %>
+          </div>
+
+
+          <!-- Foooter -->
+          <footer class="footer">
+            <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+            <!-- ejs file where footer is contained -->
+            <% include ../partials/footer %>
+          </footer>
+
+        </div>
+
+      </body>
+      </html>

@@ -1,0 +1,34 @@
+<!-- views/partials/login.ejs -->
+<div class="modal-dialog modal-login">
+  <div class="modal-content">
+      <form action="/login" class="loginForm" method="post">
+      <!-- Creating a form for user to be able to login -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+          <div class="login-message"></div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" placeholder="Enter Email Address"
+          required="required" autocomplete="email" name="email">
+          <!-- Input box for users to enter their email address -->
+        </div>
+        <div class="form-group">
+          <div class="clearfix">
+            <label>Password</label>
+          </div>
+          <input type="password" class="form-control password" placeholder="Enter Password"
+          required="required" autocomplete="current-password" data-toggle="password"
+          name="password">   <!-- Input box for user to enter their password -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-primary mr-auto" value="Login">
+        <!-- Button when pressed will login user if details are correct -->
+        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ejs file for the header information  -->
+  <% include ../partials/head %>
+
+  <title>Pin Pints | About</title>      <!-- Defining the title of the page -->
+</head>
+
+<body>
+
+  <div id="banner">    <!-- Created a div for the banner -->
+    <!-- ejs file where the navbar and banner are contained -->
+    <% include ../partials/banner %>
+  </div>
+
+  <div class="wrapper">
+    <main>
+      <div id="container">
+        <div class="aboutbox">
+          <h2>About Us</h2>
+          <p>PinPints allows users to find bars in their area or a location of their choice.</p>
+          <p>Users can view the web application/app as a guest or you can be a registered user. The guests will be
+            able to see information about the bars and how they are rated.</p>
+            <p>Once you have registered, you will be able to rate the bars for yourself and use it as a tool to
+              track which bars you have visited.</p>
+              <p>Please be aware this web application is still under development. If you experience any problems use
+                the contact page to let the development team know.
+                If users exploit or cause problems using this application the person will be dealt with in a fair
+                manner.<br/><br/>Thank you – &copy; Pint Pints </p>
+              </div>
+              <div class="sideimg">
+                  <img id="beers" src="/img/cheers.png">
+              </div>
+            </div>
+          </main>
+
+          <!-- Modal Login-->
+          <div id="modalLogin" class="modal fade">
+            <!-- login ejs file -->
+            <% include ../partials/login %>
+          </div>
+
+          <!-- Modal Register -->
+          <div id="modalRegister" class="modal fade">
+            <!-- register ejs file -->
+            <% include ../partials/register %>
+          </div>
+
+
+          <!-- Foooter -->
+          <footer class="footer">
+            <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+            <!-- ejs file where footer is contained -->
+            <% include ../partials/footer %>
+          </footer>
+
+        </div>
+
+      </body>
+      </html>

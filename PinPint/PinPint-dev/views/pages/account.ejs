@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <!-- ejs file for the header information  -->
+    <% include ../partials/head %>
+
+    <title>Pin Pints | My Account</title>       <!-- Defining the title of the page -->
+</head>
+
+<body>
+
+<div id="banner">    <!-- Created a div for the banner -->
+    <!-- ejs file where the navbar and banner are contained -->
+    <% include ../partials/banner %>
+</div>
+
+
+<div class="wrapper">
+    <% if (auth) { %>
+    <main>
+        <div class="accountManagement">
+            <h2>Change Password</h2>
+            <form action="/changePassword" id="changePasswordForm" method="post">
+                <!-- Creating a form for users with accounts to change their password -->
+                <div id="changePasswordForm-message"></div>
+                <div class="form-group">
+                    <label>Current password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter Current Password"
+                           required="required" data-toggle="password" name="oldPassword">
+                </div>    <!-- Input box for users to enter their current password -->
+                <div class="form-group">
+                    <label>New-password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter New Password"
+                           required="required" data-toggle="password" name="newPassword">
+                </div>   <!-- Input box for users to enter their new password -->
+                <div class="form-group">
+                    <label>Confirm new password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Confirm New Password"
+                           required="required" data-toggle="password" name="confirmNewPassword">
+                </div>   <!-- Input box for users to confirm their new password -->
+                <input type="submit" class="btn btn-primary mr-auto" value="Change Password">
+                <!-- Submit button when pressed will change the password of the user -->
+                <div class="form-group">
+                    <br/>
+                    <input href="#deleteAccount" type="button" class="btn btn-danger" data-toggle="modal"
+                           value="Delete Account">   <!-- Button to delete a users account when pressed -->
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Delete Account -->
+    <div id="deleteAccount" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <form action="/deleteAccount" id="deleteAccountForm" method="post">
+                    <!-- Creating a form for the user to be able to delete their account -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Remove Account</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="deleteAccount-message"></div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Email Address"
+                                   required="required" name="email">
+                            <!-- Input box for user to enter their email address -->
+                        </div>
+                        <div class="form-group">
+                            <div class="clearfix">
+                                <label>Password</label>
+                            </div>
+                            <input type="password" id="password" class="form-control" placeholder="Enter Password"
+                                   required="required" autocomplete="current-password" data-toggle="password"
+                                   name="password"> <!-- Input box for user to enter their password -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger mr-auto" value="Remove My Account">
+                        <!-- Button when pressed will delete a users account from the corresponding details -->
+                        <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% } else { %>
+    <div class="alert alert-danger" role="alert">This area need an account</div>
+    <% include ../partials/login %>
+    <% } %>
+
+    <!-- Modal Login-->
+    <div id="modalLogin" class="modal fade">
+        <!-- login ejs file -->
+        <% include ../partials/login %>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="modalRegister" class="modal fade">
+        <!-- register ejs file -->
+        <% include ../partials/register %>
+    </div>
+
+    <!-- Foooter -->
+    <footer class="footer">
+        <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+        <!-- ejs file where footer is contained -->
+        <% include ../partials/footer %>
+    </footer>
+</div>
+</body>
+
+</html>

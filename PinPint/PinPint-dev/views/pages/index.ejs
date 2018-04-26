@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ejs file for the header information  -->
+  <% include ../partials/head %>
+    <script src="/scripts/googleMaps.js"></script>
+  <script src="/scripts/rating.js"></script>
+
+  <title>Pin Pints | Homepage</title>       <!-- Defining the title of the page -->
+</head>
+
+<body>
+
+  <div id="banner">    <!-- Created a div for the banner -->
+    <!-- ejs file where the navbar and banner are contained -->
+    <% include ../partials/banner %>
+  </div>
+
+  <!-- Main content -->
+  <div class="wrapper">
+    <!-- The Wrapper, wraps the layout so that it flows down as a hierarchy and makes sure no content is out of place -->
+    <main>
+      <div id="container">
+        <!-- Add Google Maps -->
+        <div id="map"></div>
+        <noscript>An error has occurred, please verify if javascript is enabled of this website</noscript>
+        <!-- Search box and location -->
+        <div class="searchfunction">       <!-- Creating a form for users to makes searches for bars -->
+          <input type="text" placeholder="Enter a Location" class="search" id="searchbar"/>
+          <!-- Input bar for users to type their search into -->
+          <input type="button" class="findbars" value="Find Bars">
+          <!-- Input bar for users to type their search into -->
+          <input type="button" class="closetome" value="Current Location">
+          <!-- Button when pressed will try to locate nearby bars to the users location -->
+        </div>
+        <!-- Loading icon -->
+        <div class="location-loading">
+          <div class="ball"></div>
+          <div class="ball1"></div>
+          <!-- When user searches for a location, a buffering ball will appear to show the user that the search is happening -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal rating-->
+    <div class="modal fade" id="modalRating" tabindex="-1" role="dialog" aria-labelledby="modalRating"
+         aria-hidden="true">
+        <% include ../partials/rating %>
+    </div>
+
+    <!-- Modal Login-->
+    <div id="modalLogin" class="modal fade">
+      <!-- login ejs file -->
+      <% include ../partials/login %>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="modalRegister" class="modal fade">
+      <!-- register ejs file -->
+      <% include ../partials/register %>
+    </div>
+
+    <!-- Foooter -->
+    <footer class="footer">
+      <!-- Creating a footer at the bottom of the homepage for the contact details and social media links -->
+      <!-- ejs file where footer is contained -->
+      <% include ../partials/footer %>
+    </footer>
+
+  </div>
+</body>
+</html>
